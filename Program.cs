@@ -114,17 +114,8 @@ void AddstudentToList()
     foreach (string item in studentsStrings)
     {
         Console.WriteLine(item);
-        Console.WriteLine("*");
     }
 }
-
-
-
-
-//AddstudentToList("haim");
-//AddstudentToList("marcos");
-
-
 
 
 
@@ -133,40 +124,3 @@ void AddstudentToList()
 
 //}
 
-
-
-
-
-
-
-
-
-
-
-
-//foreach (string item in studentsStrings)
-//{
-//    Console.WriteLine(item);
-//    Console.WriteLine("*");
-//}
-
-
-
-
-
-
-
-
-
-
-//for (int i = 0; i < professorsList.Count; i++)
-//{
-//    Console.WriteLine($"professor Name:{professorsList[i].professorName}");
-//    Console.WriteLine($"student Name:{professorsList[i].studentName}");
-//    Console.WriteLine($"student Id:{professorsList[i].studentId}");
-
-//    for (int j = 0; j < professorsList[i].grades.Length; j++)
-//    {
-//        Console.WriteLine(professorsList[i].grades[j]);
-//    }
-//}

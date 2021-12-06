@@ -12,6 +12,7 @@ void StudentMenu()
     {
         Console.WriteLine("to add a student enter - 1");
         Console.WriteLine("to see all students enter - 2");
+        Console.WriteLine("to see first student enter - 3");
         int userSelect = int.Parse(Console.ReadLine());
 
         switch (userSelect)
@@ -21,6 +22,9 @@ void StudentMenu()
                 break;
             case 2:
                 AddstudentToList();
+                break;
+            case 3:
+                GetFirstStudent();
                 break;
             default:
                 break;
@@ -81,11 +85,11 @@ void SaveProfessor()
         FileStream professorFs = new FileStream($@"C:\TEST\STUDENTS\{student.professorName}.txt", FileMode.Append);
         using (StreamWriter writer = new StreamWriter(professorFs))
         {
-            writer.WriteLine($"id:{counterId}, name:{student.studentName}, taz:{student.studentId}, grades: ");
+            writer.Write($"id:{counterId}, name:{student.studentName}, taz:{student.studentId}, grades:");
 
             foreach (int grade in student.grades)
             {
-                writer.Write(grade + " ,");
+                writer.Write(" "+grade);
             }
             writer.WriteLine();
             counterId++;
@@ -119,8 +123,36 @@ void AddstudentToList()
 
 
 
-//void GetFirstStudent()
-//{
+void GetFirstStudent()
+{
+    Console.WriteLine("Enter prfessor name");
+    string prfessorName = Console.ReadLine();
 
-//}
+    FileStream firstStudentFs = new FileStream($@"C:\TEST\STUDENTS\{prfessorName}.txt", FileMode.Open);
+    using (StreamReader Reader = new StreamReader(firstStudentFs))
+    {
+        string student = Reader.ReadLine();
+
+        int nameStart = student.IndexOf("name:")+5;
+        int nameEnd = student.IndexOf(", taz")-11;
+
+        string fName = student.Substring(nameStart, nameEnd);
+        Console.WriteLine(fName);
+
+        int grade1Start = student.IndexOf("grades:") + 8;
+        int grade1End = student.IndexOf(" ");
+
+        string grade1 = student.Substring(grade1Start, grade1End-2);
+
+        string grade2 = student.Substring(grade1End, grade1End);
+
+
+        //string grade3 = student.Substring(student.IndexOf(grade2) + grade2.Length+1);
+
+        Console.WriteLine(grade1);
+        Console.WriteLine(grade2);
+        //Console.WriteLine(grade3);
+    }
+
+}
 
